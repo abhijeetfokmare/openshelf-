@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeakShelf — Community Book Sharing</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="home">
+  <div class="nav-wrapper">
+    <nav class="navbar glass" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">▲</span>
+        <span>PeakShelf</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+        <li><a href="browse.html" class="nav-link">Browse Books</a></li>
+        <li><a href="lend.html" class="nav-link">Share a Book</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="container">
+    <section class="hero glass">
+      <span class="eyebrow">Community Lending Library</span>
+      <h1>Pass on a great book.<br />Borrow your next favorite.</h1>
+      <p class="subtitle">
+        List books sitting on your shelf with your contact details so neighbors and fellow readers can reach out and borrow them for free.
+      </p>
+      <div class="hero-actions">
+        <a href="browse.html" class="btn btn-primary">Browse Available Books</a>
+        <a href="lend.html" class="btn btn-glass">Upload a Book</a>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Library statistics">
+      <div class="stat-card glass">
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-label">Books Shared</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-value" id="stat-available">0</div>
+        <div class="stat-label">Ready to Borrow</div>
+      </div>
+      <div class="stat-card glass">
+        <div class="stat-value" id="stat-lenders">0</div>
+        <div class="stat-label">Community Lenders</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="recent-heading">
+      <div class="section-header">
+        <div>
+          <h2 id="recent-heading" class="section-title">Recently Shared</h2>
+          <p class="section-subtitle">Fresh additions from readers near you.</p>
+        </div>
+        <a href="browse.html" class="btn btn-glass">View All Books</a>
+      </div>
+
+      <div id="recent-books-grid" class="books-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">PeakShelf — Built for local readers.</div>
+  </footer>
+
+  <!-- Contact / Borrow Modal -->
+  <div id="borrow-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-book-title">
+    <div class="modal glass-strong">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+      <span class="eyebrow" id="modal-book-genre">Genre</span>
+      <h2 id="modal-book-title" class="section-title">Book Title</h2>
+      <p id="modal-book-author" class="section-subtitle"></p>
+
+      <div class="contact-box">
+        <div class="contact-row">
+          <span>Lender</span>
+          <strong id="modal-lender-name"></strong>
+        </div>
+        <div class="contact-row">
+          <span>Phone</span>
+          <strong id="modal-lender-phone"></strong>
+        </div>
+        <div class="contact-row">
+          <span>Pickup Note</span>
+          <strong id="modal-lender-note"></strong>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary" id="modal-copy-btn">Copy Number</button>
+        <a href="#" class="btn btn-glass" id="modal-call-btn">Call Lender</a>
+        <button type="button" class="btn btn-glass" id="modal-toggle-status">Mark Borrowed</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast glass-strong" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

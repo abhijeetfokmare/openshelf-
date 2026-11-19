@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share a Book — PeakShelf</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="lend">
+  <div class="nav-wrapper">
+    <nav class="navbar glass" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">▲</span>
+        <span>PeakShelf</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="browse.html" class="nav-link">Browse Books</a></li>
+        <li><a href="lend.html" class="nav-link active" aria-current="page">Share a Book</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="container">
+    <section class="form-card glass" aria-labelledby="upload-heading">
+      <span class="eyebrow">Lend a Book</span>
+      <h1 id="upload-heading" style="font-size: 2rem; margin-bottom: 8px;">Add to the Shelf</h1>
+      <p class="section-subtitle">
+        Enter the book details and your contact number so readers can reach out to borrow it.
+      </p>
+
+      <form id="lend-form" novalidate>
+        <div class="form-grid">
+          <div class="form-field full">
+            <label for="book-title" class="form-label">Book Name *</label>
+            <input
+              type="text"
+              id="book-title"
+              name="title"
+              class="form-input"
+              placeholder="e.g., Atomic Habits"
+              required
+            />
+            <span class="form-error" id="err-title"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="book-author" class="form-label">Author</label>
+            <input
+              type="text"
+              id="book-author"
+              name="author"
+              class="form-input"
+              placeholder="e.g., James Clear"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="book-genre" class="form-label">Category</label>
+            <select id="book-genre" name="genre" class="form-select">
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Tech">Tech</option>
+              <option value="Self-Help">Self-Help</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="lender-name" class="form-label">Your Name *</label>
+            <input
+              type="text"
+              id="lender-name"
+              name="lenderName"
+              class="form-input"
+              placeholder="e.g., Aarav Sharma"
+              required
+            />
+            <span class="form-error" id="err-name"></span>
+          </div>
+
+          <div class="form-field">
+            <label for="lender-phone" class="form-label">Phone Number *</label>
+            <input
+              type="tel"
+              id="lender-phone"
+              name="phone"
+              class="form-input"
+              placeholder="e.g., +91 98765 43210"
+              required
+            />
+            <span class="form-error" id="err-phone"></span>
+          </div>
+
+          <div class="form-field full">
+            <label for="lender-note" class="form-label">Pickup Note / Area (Optional)</label>
+            <input
+              type="text"
+              id="lender-note"
+              name="note"
+              class="form-input"
+              placeholder="e.g., Available evenings near Wakad"
+            />
+          </div>
+
+          <div class="form-field full" style="margin-top: 6px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Publish Book Listing
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="my-listings-heading">
+      <div class="section-header">
+        <div>
+          <h2 id="my-listings-heading" class="section-title">Your Uploaded Books</h2>
+          <p class="section-subtitle">Books added from this browser can be removed anytime.</p>
+        </div>
+      </div>
+
+      <div id="my-books-grid" class="books-grid"></div>
+      <div id="my-books-empty" class="empty-state glass" hidden>
+        <p style="margin: 0;">You haven't uploaded any books yet. Use the form above to share your first one.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">PeakShelf — Built for local readers.</div>
+  </footer>
+
+  <div id="toast" class="toast glass-strong" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

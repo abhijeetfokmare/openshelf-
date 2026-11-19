@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Books — PeakShelf</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="browse">
+  <div class="nav-wrapper">
+    <nav class="navbar glass" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">▲</span>
+        <span>PeakShelf</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="browse.html" class="nav-link active" aria-current="page">Browse Books</a></li>
+        <li><a href="lend.html" class="nav-link">Share a Book</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="container">
+    <div class="section-header">
+      <div>
+        <h1>Community Library</h1>
+        <p class="section-subtitle">Find a book and contact the owner directly to arrange a pickup.</p>
+      </div>
+      <a href="lend.html" class="btn btn-primary">+ Share a Book</a>
+    </div>
+
+    <div class="toolbar glass" role="search">
+      <div class="toolbar-search">
+        <label for="search-input" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Search books</label>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Search by book title, author, or lender name..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="filter-group" id="genre-filters" role="group" aria-label="Filter by category">
+        <button type="button" class="chip active" data-filter="All">All</button>
+        <button type="button" class="chip" data-filter="Available">Available Only</button>
+        <button type="button" class="chip" data-filter="Fiction">Fiction</button>
+        <button type="button" class="chip" data-filter="Non-Fiction">Non-Fiction</button>
+        <button type="button" class="chip" data-filter="Tech">Tech</button>
+        <button type="button" class="chip" data-filter="Self-Help">Self-Help</button>
+      </div>
+    </div>
+
+    <div id="browse-books-grid" class="books-grid"></div>
+
+    <div id="browse-empty" class="empty-state glass" hidden>
+      <h2 class="section-title">No matching books found</h2>
+      <p>Try clearing your search or be the first to share a book in this category.</p>
+      <a href="lend.html" class="btn btn-primary">Upload a Book</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">PeakShelf — Built for local readers.</div>
+  </footer>
+
+  <!-- Contact / Borrow Modal -->
+  <div id="borrow-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-book-title">
+    <div class="modal glass-strong">
+      <button type="button" class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+      <span class="eyebrow" id="modal-book-genre">Genre</span>
+      <h2 id="modal-book-title" class="section-title">Book Title</h2>
+      <p id="modal-book-author" class="section-subtitle"></p>
+
+      <div class="contact-box">
+        <div class="contact-row">
+          <span>Lender</span>
+          <strong id="modal-lender-name"></strong>
+        </div>
+        <div class="contact-row">
+          <span>Phone</span>
+          <strong id="modal-lender-phone"></strong>
+        </div>
+        <div class="contact-row">
+          <span>Pickup Note</span>
+          <strong id="modal-lender-note"></strong>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary" id="modal-copy-btn">Copy Number</button>
+        <a href="#" class="btn btn-glass" id="modal-call-btn">Call Lender</a>
+        <button type="button" class="btn btn-glass" id="modal-toggle-status">Mark Borrowed</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast glass-strong" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
